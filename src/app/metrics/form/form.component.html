@@ -1,0 +1,12 @@
+{{ metric.category}}
+<form (ngSubmit)="sendMetric()" #utilisateurForm="ngForm" name="metricForm">
+  <div>
+    <label>value:
+      <input [(ngModel)]="metric.value" placeholder="name" name="value">
+    </label>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+
+  </div>
