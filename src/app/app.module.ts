@@ -6,6 +6,7 @@ import { FormComponent } from './metrics/form/form.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
+import { StarRatingModule } from 'angular-star-rating';
 
 @NgModule({
   declarations: [
@@ -16,9 +17,11 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    StarRatingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
