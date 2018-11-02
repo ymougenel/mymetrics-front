@@ -9,13 +9,13 @@ import { ApiConfig } from '../api-config';
 })
 export class MetricsService {
 
-  private METRICS8URL = `${this._apiConfig.apiUrl}/metrics/`;
+  private METRICS_URL = `${this._apiConfig.apiUrl}/metrics/`;
 
   constructor(private _http: HttpClient, private _apiConfig: ApiConfig) {
   }
 
   postMetric(metric: Metric): Observable<any> {
     console.log('Post metric called with: ' + metric);
-    return this._http.post(`${this.METRICS8URL}`, metric);
+    return this._http.post(`${this.METRICS_URL}`, metric);
   }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Metric } from '../../core/models/metric';
 import { MetricsService } from '../../core/services/metrics/metrics.service';
 import { getMockList } from '../../core/models/mock/metric-mock';
+import { Tracker } from '../../core/models/Tracker';
+import { TrackersService } from '../../core/services/trackers/trackers.service';
 
 @Component({
   selector: 'mymetrics-form',
@@ -11,11 +13,18 @@ import { getMockList } from '../../core/models/mock/metric-mock';
 export class FormComponent implements OnInit {
 
   metrics: Metric[] = getMockList();
+  trackers: Tracker[];
 
-  constructor(private metricService: MetricsService) {
+  constructor(private metricService: MetricsService, private trackerService: TrackersService) {
   }
 
   ngOnInit() {
+    this.getTrackers();
+  }
+
+  getTrackers() {
+    this.trackerService.getTrackers().subscribe(res => this.setMetrics(res));
+
   }
 
   sendMetric() {
@@ -30,5 +39,14 @@ export class FormComponent implements OnInit {
 
   onClick(event) {
     console.log(event.rating);
+  }
+
+  setMetrics(trackers: Tracker[]) {
+    console.log(typeof trackers);
+
+    for (var tracker in trackers) {
+      console.log(typeof tracker);
+      this.metrics.push(new Metric({type: '', value: 3}));
+    }
   }
 }
